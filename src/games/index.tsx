@@ -6,7 +6,7 @@ export const GAMES: GameBundle[] = [
   //   id: 'example',
   //   meta: {
   //     background: '#00ffe1',
-  //     name: 'Example',
+  //     name: 'Пример',
   //     image: '#',
   //     description: '',
   //   },
@@ -16,10 +16,10 @@ export const GAMES: GameBundle[] = [
     id: 'dice',
     meta: {
       background: '#ff6490',
-      name: 'Dice',
+      name: 'Кости',
       image: '/games/dice.png',
       description: `
-        Dice challenges players to predict the outcome of a roll with a unique twist. Select a number and aim to roll below it to win. Adjusting your choice affects potential payouts, balancing risk and reward for an engaging experience.
+        Кости бросают вызов игрокам, заставляя их предсказать результат броска с уникальным поворотом. Выберите число и постарайтесь выбросить меньше этого числа, чтобы выиграть. Изменение вашего выбора влияет на потенциальные выплаты, сбалансировав риск и вознаграждение для увлекательного опыта.
       `,
     },
     app: React.lazy(() => import('./Dice')),
@@ -28,10 +28,10 @@ export const GAMES: GameBundle[] = [
     id: 'slots',
     meta: {
       background: '#5465ff',
-      name: 'Slots',
+      name: 'Слот-машина',
       image: '/games/slots.png',
       description: `
-        Slots is the quintessential game of luck and anticipation. Spin the reels and match symbols to win, with potential rewards displayed upfront. A fair and exciting game, Slots offers a classic casino experience tailored for digital enjoyment.
+        Слот-машина — это классическая игра удачи и ожидания. Крутите барабаны и сопоставляйте символы, чтобы выиграть, с потенциальными наградами, отображенными заранее. Справедливая и захватывающая игра, Слот-машина предлагает классический казино-опыт, адаптированный для цифрового удовольствия.
       `,
     },
     app: React.lazy(() => import('./Slots')),
@@ -39,9 +39,9 @@ export const GAMES: GameBundle[] = [
   {
     id: 'flip',
     meta: {
-      name: 'Flip',
+      name: 'Монета',
       description: `
-        Flip offers a straightforward yet thrilling gamble: choose Heads or Tails and double your money or lose it all. This simple, high-stakes game tests your luck and decision-making with every flip of the coin.
+        Монета предлагает простую, но захватывающую ставку: выберите Орел или Решка и удвойте свои деньги или потеряйте всё. Эта простая игра с высокими ставками проверяет вашу удачу и принятие решений с каждым броском монеты.
       `,
       image: '/games/flip.png',
       background: '#ffe694',
@@ -54,7 +54,7 @@ export const GAMES: GameBundle[] = [
       name: 'HiLo',
       image: '/games/hilo.png',
       description: `
-        HiLo is a game of foresight and luck, challenging players to guess whether the next card will be higher or lower. Make consecutive correct guesses to increase your winnings, and decide when to cash out for maximum rewards.
+        HiLo — это игра предвидения и удачи, бросающая вызов игрокам угадать, будет ли следующая карта выше или ниже. Сделайте последовательные правильные догадки, чтобы увеличить свои выигрыши, и решите, когда выйти из игры для максимальных вознаграждений.
       `,
       background: '#ff4f4f',
     },
@@ -64,9 +64,9 @@ export const GAMES: GameBundle[] = [
   {
     id: 'mines',
     meta: {
-      name: 'Mines',
+      name: 'Мины',
       description: `
-        There's money hidden beneath the squares. The reward will increase the more squares you reveal, but watch out for the 5 hidden mines. Touch one and you'll go broke. You can cash out at any time.
+        Под квадратами скрыты деньги. Вознаграждение увеличится по мере того, как вы открываете больше квадратов, но остерегайтесь 5 скрытых мин. Коснитесь одной из них, и вы обанкротитесь. Вы можете забрать деньги в любой момент.
       `,
       image: '/games/mines.png',
       background: '#8376ff',
@@ -76,10 +76,10 @@ export const GAMES: GameBundle[] = [
   {
     id: 'roulette',
     meta: {
-      name: 'Roulette',
+      name: 'Рулетка',
       image: '/games/roulette.png',
       description: `
-        Roulette brings the classic wheel-spinning game to life with a digital twist. Bet on where the ball will land and watch as the wheel decides your fate. With straightforward rules and the chance for big wins, Roulette is a timeless game of chance.
+        Рулетка переносит классическую игру с колесом в цифровой формат. Ставьте на то, куда упадет шарик, и наблюдайте, как колесо решает вашу судьбу. С простыми правилами и возможностью крупных выигрышей, Рулетка — это вечная игра случая.
       `,
       background: '#1de87e',
     },
@@ -90,10 +90,10 @@ export const GAMES: GameBundle[] = [
     meta: {
       background: '#7272ff',
       image: '/games/plinko.png',
-      name: 'Plinko',
+      name: 'Плинко',
       description: `
-        Plinko is played by dropping chips down a pegged board where they randomly fall into slots with varying win amounts. Each drop is a mix of anticipation and strategy, making Plinko an endlessly entertaining game of chance.
-        ⚠️ Under development. Results shown might be incorrect. ⚠️
+        Плинко играется путем сбрасывания фишек на доску с штырями, где они случайным образом попадают в ячейки с различными суммами выигрыша. Каждый сброс — это смесь ожидания и стратегии, что делает Плинко бесконечно увлекательной игрой случая.
+        ⚠️ В разработке. Результаты могут быть неверными. ⚠️
       `,
     },
     app: React.lazy(() => import('./Plinko')),
@@ -103,9 +103,9 @@ export const GAMES: GameBundle[] = [
     meta: {
       background: '#de95e8',
       image: '/games/crash.png',
-      name: 'Crash',
+      name: 'Краш',
       description: `
-      Predict a multiplier target and watch a rocket attempt to reach it. If the rocket crashes before the target, the player loses; if it reaches or exceeds the target, the player wins.
+      Предскажите целевой множитель и наблюдайте, как ракета пытается его достичь. Если ракета взорвется до достижения цели, игрок проигрывает; если она достигает или превышает цель, игрок выигрывает.
       `,
     },
     app: React.lazy(() => import('./CrashGame')),
