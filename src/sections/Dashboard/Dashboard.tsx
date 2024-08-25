@@ -46,7 +46,7 @@ export default function Dashboard() {
   return (
     <>
       <WelcomeBanner />
-      <h2 style={{ textAlign: 'center' }}>Games</h2>
+      <h2 style={{ textAlign: 'center' }}>Игры</h2>
       <GameGrid />
     </>
   )
