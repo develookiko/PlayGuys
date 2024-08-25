@@ -25,49 +25,49 @@ export function ProvablyFairModal(props: {onClose: () => void}) {
     }
   }
 
-  return (
-    <Modal onClose={() => props.onClose()}>
-      <h1>Provably Fair</h1>
-      {!gamba.userCreated && (
-        <>
-          <p>
-            Provably Fair allows you to verify that the result of each game was randomly generated. Since you are playing from this wallet for the first time, you can request the initial hashed seed ahead of time. After this it will be done automatically for each play.
-          </p>
-          <GambaUi.Button main disabled={initializing} onClick={initialize}>
-            Get hashed seed
-          </GambaUi.Button>
-        </>
-      )}
-      {gamba.userCreated && (
-        <>
-          <p>
-            Your client seed will affect the result of the next game you play.
-          </p>
-          <div style={{ display: 'grid', gap: '10px', width: '100%', padding: '20px' }}>
-            <div>Next RNG Seed (sha256)</div>
+return (
+  <Modal onClose={() => props.onClose()}>
+    <h1>Подтверждённая честность</h1>
+    {!gamba.userCreated && (
+      <>
+        <p>
+          «Подтверждённая честность» позволяет вам проверить, что результат каждой игры был случайным образом сгенерирован. Так как вы играете с этого кошелька впервые, вы можете запросить начальное хешированное зерно заранее. После этого это будет делаться автоматически для каждой игры.
+        </p>
+        <GambaUi.Button main disabled={initializing} onClick={initialize}>
+          Получить хешированное зерно
+        </GambaUi.Button>
+      </>
+    )}
+    {gamba.userCreated && (
+      <>
+        <p>
+          Ваше клиентское зерно повлияет на результат следующей игры, в которую вы сыграете.
+        </p>
+        <div style={{ display: 'grid', gap: '10px', width: '100%', padding: '20px' }}>
+          <div>Следующее зерно ГСЧ (sha256)</div>
+          <GambaUi.TextInput
+            value={gamba.nextRngSeedHashed ?? ''}
+            disabled
+          />
+          <div>Клиентское зерно</div>
+          <div style={{ display: 'flex', gap: '10px', width: '100%' }}>
             <GambaUi.TextInput
-              value={gamba.nextRngSeedHashed ?? ''}
-              disabled
+              style={{ flexGrow: '1' }}
+              value={platform.clientSeed}
+              disabled={gamba.isPlaying}
+              maxLength={32}
+              onChange={platform.setClientSeed}
             />
-            <div>Client Seed</div>
-            <div style={{ display: 'flex', gap: '10px', width: '100%' }}>
-              <GambaUi.TextInput
-                style={{ flexGrow: '1' }}
-                value={platform.clientSeed}
-                disabled={gamba.isPlaying}
-                maxLength={32}
-                onChange={platform.setClientSeed}
-              />
-              <GambaUi.Button
-                disabled={gamba.isPlaying}
-                onClick={() => platform.setClientSeed(String(Math.random() * 1e9 | 0))}
-              >
-                <Icon.Shuffle />
-              </GambaUi.Button>
-            </div>
+            <GambaUi.Button
+              disabled={gamba.isPlaying}
+              onClick={() => platform.setClientSeed(String(Math.random() * 1e9 | 0))}
+            >
+              <Icon.Shuffle />
+            </GambaUi.Button>
           </div>
-        </>
-      )}
-    </Modal>
-  )
+        </div>
+      </>
+    )}
+  </Modal>
+)
 }
