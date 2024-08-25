@@ -54,7 +54,7 @@ export function UserButton() {
     <>
       {wallet.connected ? <ConnectedButton /> : (
         <GambaUi.Button onClick={connect}>
-          {wallet.connecting ? 'Connecting' : 'Connect'}
+          {wallet.connecting ? 'Подключение' : 'Подключен'}
         </GambaUi.Button>
       )}
     </>
