@@ -20,7 +20,7 @@ function TimeDiff({ time, suffix = 'ago' }: {time: number, suffix?: string}) {
     if (minutes >= 1) {
       return minutes + 'm ' + suffix
     }
-    return 'Just now'
+    return 'Прямо сейчас!'
   }, [diff])
 }
 
@@ -42,7 +42,7 @@ function RecentPlay({ event }: {event: GambaTransaction<'GameSettled'>}) {
       <div style={{ color: 'var(--gamba-ui-primary-color)' }}>
         {data.user.toBase58().substring(0, 4)}...
       </div>
-      {md && (profit >= 0 ? ' won ' : ' lost ')}
+      {md && (profit >= 0 ? ' победа ' : ' поражение ')}
       <Profit $win={profit > 0}>
         <img src={token.image} height="20px" style={{ borderRadius: '50%' }} />
         <TokenValue amount={Math.abs(profit)} mint={data.tokenMint} />
@@ -91,7 +91,7 @@ export default function RecentPlays() {
         ),
       )}
       <GambaUi.Button main onClick={() => window.open(`${EXPLORER_URL}/platform/${PLATFORM_CREATOR_ADDRESS.toString()}`)}>
-        🚀 Explorer
+        🚀 Проводник
       </GambaUi.Button>
     </Container>
   )
