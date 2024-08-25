@@ -24,7 +24,7 @@ export function TransactionModal(props: {onClose: () => void}) {
         program.methods
           .playerInitialize()
           .instruction(),
-        { confirmation: 'confirmed' },
+        { confirmation: 'принято' },
       )
     } finally {
       setInitializing(false)
@@ -50,7 +50,7 @@ export function TransactionModal(props: {onClose: () => void}) {
 
     await sendTransaction(
       ix,
-      { confirmation: 'confirmed' },
+      { confirmation: 'принято' },
     )
   }
 
@@ -61,34 +61,34 @@ export function TransactionModal(props: {onClose: () => void}) {
         program.methods
           .playerClose()
           .instruction(),
-        { confirmation: 'confirmed' },
+        { confirmation: 'принято' },
       )
     } finally {
       setClosingAccount(false)
     }
   }
 
-  return (
-    <Modal onClose={() => props.onClose()}>
-      <h1>Transaction</h1>
-      {loadingState} - {txStore.state} - {status} - {gamba.nonce.toString()}
-      <div style={{ display: 'flex', gap: '10px' }}>
-        <GambaUi.Button disabled={gamba.userCreated || initializing} onClick={initialize}>
-          Open account
+return (
+  <Modal onClose={() => props.onClose()}>
+    <h1>Транзакция</h1>
+    {loadingState} - {txStore.state} - {status} - {gamba.nonce.toString()}
+    <div style={{ display: 'flex', gap: '10px' }}>
+      <GambaUi.Button disabled={gamba.userCreated || initializing} onClick={initialize}>
+        Открыть аккаунт
+      </GambaUi.Button>
+      <GambaUi.Button onClick={reset}>
+        Сбросить аккаунт
+      </GambaUi.Button>
+      <GambaUi.Button disabled={!gamba.userCreated || closingAccount} onClick={closeAccount}>
+        Закрыть аккаунт
+      </GambaUi.Button>
+      {txStore.txId && (
+        <GambaUi.Button main onClick={() => window.open('https://solscan.io/tx/' + txStore.txId)}>
+          Просмотр TX
         </GambaUi.Button>
-        <GambaUi.Button onClick={reset}>
-          Reset account
-        </GambaUi.Button>
-        <GambaUi.Button disabled={!gamba.userCreated || closingAccount} onClick={closeAccount}>
-          Close account
-        </GambaUi.Button>
-        {txStore.txId && (
-          <GambaUi.Button main onClick={() => window.open('https://solscan.io/tx/' + txStore.txId)}>
-            View TX
-          </GambaUi.Button>
-        )}
-      </div>
-      <LoadingBar />
-    </Modal>
-  )
+      )}
+    </div>
+    <LoadingBar />
+  </Modal>
+)
 }
