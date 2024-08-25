@@ -31,7 +31,7 @@ function ErrorHandler() {
         walletModal.setVisible(true)
         return
       }
-      toast({ title: '❌ Transaction error', description: error.error?.errorMessage ?? error.message })
+      toast({ title: '❌ Ошибка транзакции', description: error.error?.errorMessage ?? error.message })
     },
   )
 
@@ -39,7 +39,7 @@ function ErrorHandler() {
     <>
       {error && (
         <Modal onClose={() => setError(undefined)}>
-          <h1>Error occured</h1>
+          <h1>Произошла ошибка</h1>
           <p>{error.message}</p>
         </Modal>
       )}
@@ -54,15 +54,15 @@ export default function App() {
     <>
       {newcomer && (
         <Modal>
-          <h1>Welcome</h1>
+          <h1>Добро пожаловать</h1>
           <TosWrapper>
             <TosInner dangerouslySetInnerHTML={{ __html: TOS_HTML }} />
           </TosWrapper>
           <p>
-            By playing on our platform, you confirm your compliance.
+            Играя на нашей платформе, вы подтверждаете своё согласие с правилами.
           </p>
           <GambaUi.Button main onClick={() => set({ newcomer: false })}>
-            Acknowledge
+            Признано!
           </GambaUi.Button>
         </Modal>
       )}
@@ -75,7 +75,7 @@ export default function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/:gameId" element={<Game />} />
         </Routes>
-        <h2 style={{ textAlign: 'center' }}>Recent Plays</h2>
+        <h2 style={{ textAlign: 'center' }}>Недавние игры</h2>
         <RecentPlays />
       </MainWrapper>
     </>
