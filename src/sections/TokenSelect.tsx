@@ -77,42 +77,42 @@ export default function TokenSelect() {
     setVisible(!visible)
   }
 
-  return (
-    <>
-      {warning && (
-        <Modal>
-          <h1>Real plays disabled</h1>
-          <p>
-            This platform only allows you to play with fake tokens.
-          </p>
-          <GambaUi.Button
-            main
-            onClick={() => {
-              setWarning(false)
-              context.setPool(FAKE_TOKEN_MINT)
-            }}
-          >
-            Switch to fake tokens
-          </GambaUi.Button>
-        </Modal>
-      )}
-      <div style={{ position: 'relative' }}>
-        <GambaUi.Button onClick={click}>
-          {selectedToken && (
-            <StyledToken>
-              <TokenImage mint={selectedToken.mint} />
-              <TokenValue amount={balance.balance} />
-            </StyledToken>
-          )}
+return (
+  <>
+    {warning && (
+      <Modal>
+        <h1>Реальные игры отключены</h1>
+        <p>
+          Эта платформа позволяет играть только с фейковыми токенами.
+        </p>
+        <GambaUi.Button
+          main
+          onClick={() => {
+            setWarning(false)
+            context.setPool(FAKE_TOKEN_MINT)
+          }}
+        >
+          Перейти на фейковые токены
         </GambaUi.Button>
-        <Dropdown visible={visible}>
-          {POOLS.map((pool, i) => (
-            <StyledTokenButton onClick={() => selectPool(pool)} key={i}>
-              <TokenSelectItem mint={pool.token} />
-            </StyledTokenButton>
-          ))}
-        </Dropdown>
-      </div>
-    </>
-  )
+      </Modal>
+    )}
+    <div style={{ position: 'relative' }}>
+      <GambaUi.Button onClick={click}>
+        {selectedToken && (
+          <StyledToken>
+            <TokenImage mint={selectedToken.mint} />
+            <TokenValue amount={balance.balance} />
+          </StyledToken>
+        )}
+      </GambaUi.Button>
+      <Dropdown visible={visible}>
+        {POOLS.map((pool, i) => (
+          <StyledTokenButton onClick={() => selectPool(pool)} key={i}>
+            <TokenSelectItem mint={pool.token} />
+          </StyledTokenButton>
+        ))}
+      </Dropdown>
+    </div>
+  </>
+)
 }
