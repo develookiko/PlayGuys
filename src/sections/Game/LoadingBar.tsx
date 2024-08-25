@@ -53,22 +53,22 @@ export function useLoadingState() {
   const game = useAccount(getGameAddress(userAddress), decodeGame)
   const txStore = useTransactionStore()
   const step = (
-    () => {
-      if (txStore.label !== 'play') {
-        return -1
-      }
-      if (game?.status.resultRequested) {
-        return 2
-      }
-      if (txStore.state === 'processing' || txStore.state === 'sending') {
-        return 1
-      }
-      if (txStore.state === 'simulating' || txStore.state === 'signing') {
-        return 0
-      }
-      return -1
+  () => {
+    if (txStore.label !== 'игра') {
+      return -1;
     }
-  )()
+    if (game?.status.resultRequested) {
+      return 2;
+    }
+    if (txStore.state === 'обработка' || txStore.state === 'отправка') {
+      return 1;
+    }
+    if (txStore.state === 'симуляция' || txStore.state === 'подпись') {
+      return 0;
+    }
+    return -1;
+  }
+)()
 
   return step
 }
@@ -76,20 +76,18 @@ export function useLoadingState() {
 export function LoadingBar() {
   const step = useLoadingState()
 
-  return (
-    <div>
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <StyledLoadingThingy>
-          {steps
-            .map((__, i) => (
-              <StyledLoadingBar
-                key={i}
-                $state={step === i ? 'loading' : step > i ? 'finished' : 'none'}
-              />
-            ),
-            )}
-        </StyledLoadingThingy>
-      </div>
+return (
+  <div>
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <StyledLoadingThingy>
+        {steps.map((__, i) => (
+          <StyledLoadingBar
+            key={i}
+            $state={step === i ? 'загрузка' : step > i ? 'завершено' : 'нет'}
+          />
+        ))}
+      </StyledLoadingThingy>
     </div>
-  )
+  </div>
+)
 }
